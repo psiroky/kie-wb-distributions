@@ -7,6 +7,9 @@
   <distributable/>
   -->
 
+  <servlet>
+    <servlet-name>javax.ws.rs.core.Application</servlet-name>
+  </servlet>
   <servlet-mapping>
     <servlet-name>javax.ws.rs.core.Application</servlet-name>
     <url-pattern>/rest/*</url-pattern>
@@ -18,14 +21,6 @@
     <init-param>
       <param-name>org.uberfire.cookie.id</param-name>
       <param-value>kie.ide.console</param-value>
-    </init-param>
-    <init-param>
-      <param-name>org.uberfire.auth.scheme</param-name>
-      <param-value>org.uberfire.security.server.auth.JACCAuthenticationScheme</param-value>
-    </init-param>
-    <init-param>
-      <param-name>org.uberfire.auth.rememberme</param-name>
-      <param-value>disabled</param-value>
     </init-param>
     <init-param>
       <param-name>org.uberfire.auth.force.url</param-name>
@@ -485,19 +480,19 @@ See http://www.w3.org/TR/SVG/intro.html#MIMEType. -->
     </auth-constraint>
   </security-constraint>
 
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>formModeler</web-resource-name>
-      <url-pattern>/formModeler/*</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>admin</role-name>
-      <role-name>analyst</role-name>
-      <role-name>developer</role-name>
-      <role-name>user</role-name>
-      <role-name>manager</role-name>
-    </auth-constraint>
-  </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+          <web-resource-name>formModeler</web-resource-name>
+          <url-pattern>/formModeler/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+          <role-name>admin</role-name>
+          <role-name>analyst</role-name>
+          <role-name>developer</role-name>
+          <role-name>user</role-name>
+          <role-name>manager</role-name>
+        </auth-constraint>
+    </security-constraint>
 
   <login-config>
     <auth-method>FORM</auth-method>
