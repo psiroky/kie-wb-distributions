@@ -89,6 +89,10 @@
 
       <property name="jta.UserTransaction"
                 value="jta/UserTransaction"/>
+
+      <property name="hibernate.globally_quoted_identifiers"
+                value="true"/>
+
     </properties>
   </persistence-unit>
 
