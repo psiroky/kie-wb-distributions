@@ -77,7 +77,6 @@ The application requires a datasource which must be created prior to the deploym
   - Select the appropriate scope and click on the _New_ button.
   - Fill out the creation form. Set the following _JNDI name_ _jdbc/jbpm
     (must match the data source defined in the _persistence.xml_ file contained in the _kie-wb.war_)
-
   - Select the existing JDBC provider you created. Click _Next_.
   - Keep clicking _Next_ until _Finish_.
   - Save to master configuration.
@@ -121,4 +120,4 @@ Ensure the following radio buttons are checked:
 
 Save the configurations to the master and restart the server.
 
-Once restarted you should be able to access the kie-wb application by typong the following URL: _http://http://localhost:9081/kie-wb_
+Once restarted you should be able to access the kie-wb application by typing the following URL: _http://http://localhost:9081/kie-wb_
