@@ -59,7 +59,7 @@ The application requires a datasource which must be created prior to the deploym
 
   - Left side panel, click on _Resources > JDBC > JDBC Providers_
   - Select the appropriate scope and click on the _New_ button.
-  - Fill out the form. For non-listed database types (i.e: H2, Postgres & Mysql) you need to provide the path to the JDBC driver jar file plus the following class name:
+  - Fill out the form. For non-listed database types (i.e: _H2, Postgres & Mysql_) you need to provide the path to the JDBC driver jar plus the following class name:
 
           +------------+-------------------------------------------------------------+
           | Database   |  Implementation class name                                  |
@@ -75,7 +75,7 @@ The application requires a datasource which must be created prior to the deploym
 
   - Left side panel, click on _Resources > JDBC > Data sources_
   - Select the appropriate scope and click on the _New_ button.
-  - Fill out the creation form. Set the following _JNDI name_ _jdbc/jbpm
+  - Fill out the creation form. Set the following JNDI name _jdbc/jbpm_
     (must match the data source defined in the _persistence.xml_ file contained in the _kie-wb.war_)
   - Select the existing JDBC provider you created. Click _Next_.
   - Keep clicking _Next_ until _Finish_.
@@ -97,17 +97,17 @@ Deploy the application
 **Upload the WAR file**
 
   - Left side panel click on *Applications > Application types > Websphere enterprise applications*
-  - Click on _Install_, select the *kie-wb-*-was8.war* file from your local filesystem. Click _Next_
+  - Click on _Install_, select the _kie-wb-was8.war_ file from your local filesystem. Click _Next_
   - From here, you will be asked with several deployments settings.
   - You'll need to select the datasource created above as the datasource to be used by the application.
-  - We also recommend to set is the context patch of the webapp to _kie-wb_.
+  - We also recommend to set is the context path of the webapp to _kie-wb_.
   - Click _Next_ until finished.
 
 **App. settings**
 
 Go to _Applications > Application types > Websphere enterprise applications > kie-wb app > Security role to user/group mapping_
 
-   - Select the five BPMS roles (admin, analyst, developer, manager, user)
+   - Select the five BPMS roles: admin, analyst, developer, manager, user.
    - Click on _Map Special Subjects_ and select the _All Authenticated in Application's Realm_ option.
 
 Go to _Applications > Application types > Websphere enterprise applications > kie-wb app > Class loading and update detection_
