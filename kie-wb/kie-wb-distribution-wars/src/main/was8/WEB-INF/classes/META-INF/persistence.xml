@@ -15,7 +15,7 @@
 
   <persistence-unit name="org.jbpm.domain" transaction-type="JTA">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <jta-data-source>jdbc/ExampleDS</jta-data-source>
+    <jta-data-source>jdbc/jbpm</jta-data-source>
     <mapping-file>META-INF/Taskorm.xml</mapping-file>
     <mapping-file>META-INF/JBPMorm.xml</mapping-file>
     <mapping-file>META-INF/Executor-orm.xml</mapping-file>
@@ -68,31 +68,10 @@
       <property name="hibernate.max_fetch_depth" value="3"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.show_sql" value="false"/>
-
-      <property name="hibernate.dialect"
-                value="org.hibernate.dialect.DerbyTenSevenDialect"/>
-
-      <!-- BZ 841786: AS7/EAP 6/Hib 4 uses new (sequence) generators which seem to cause problems -->
-      <property name="hibernate.id.new_generator_mappings"
-                value="false"/>
-      <property name="hibernate.transaction.jta.platform"
-                value="org.hibernate.service.jta.platform.internal.WebSphereExtendedJtaPlatform"/>
-
-      <property name="hibernate.transaction.manager_lookup_class"
-                value="org.hibernate.transaction.WebSphereExtendedJTATransactionLookup"/>
-
-      <property name="hibernate.transaction.factory_class"
-                value="org.hibernate.transaction.CMTTransactionFactory"/>
-
-      <property name="hibernate.temp.use_jdbc_metadata_defaults"
-                value="false"/>
-
-      <property name="jta.UserTransaction"
-                value="jta/UserTransaction"/>
-
-      <property name="hibernate.globally_quoted_identifiers"
-                value="true"/>
-
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <property name="jta.UserTransaction" value="jta/UserTransaction"/>
+      <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+      <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.WebSphereExtendedJtaPlatform"/>
     </properties>
   </persistence-unit>
 

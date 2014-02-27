@@ -122,11 +122,17 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
     </dependency>
-    <!-- For WAS8 shadding -->
+    <!-- For WAS8 shading -->
     <dependency>
       <groupId>org.sonatype.sisu</groupId>
       <artifactId>sisu-inject-bean</artifactId>
       <version>2.2.3</version>
+    </dependency>
+    <!-- WAS8 requires JUL -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>${version.org.slf4j}</version>
     </dependency>
   </dependencies>
 
