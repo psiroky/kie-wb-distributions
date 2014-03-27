@@ -520,7 +520,12 @@ See http://www.w3.org/TR/SVG/intro.html#MIMEType. -->
 
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
-    <url-pattern>/org.kie.workbench.KIEWebapp/Controller</url-pattern>
+    <url-pattern>/org.kie.workbench.KIEWebapp/forms/Controller</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+      <servlet-name>Controller</servlet-name>
+      <url-pattern>/forms/Controller</url-pattern>
   </servlet-mapping>
   <!-- end form-modeler-->
 
