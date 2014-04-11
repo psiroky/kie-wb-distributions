@@ -180,7 +180,7 @@ function jbpmRestAPI() {
             var config = configs[responseDiv];
             if (config) {
                 var frame = document.getElementById(responseDiv + '_form').contentWindow;
-                frame.postMessage('startProcess', config.formURL);
+                frame.postMessage(action, config.formURL);
             }
         }
     }
