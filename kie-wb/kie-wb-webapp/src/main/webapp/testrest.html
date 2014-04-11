@@ -4,6 +4,10 @@
     <script src="js/jbpm-rest-integration.js" type="text/javascript"></script>
     <script type="text/javascript">
 
+        function clearDiv(divId) {
+            document.getElementById(divId).innerHTML = "";
+        }
+
         function showTaskForm() {
             var hostUrl = document.getElementById('url').value;
             var taskId = document.getElementById('taskId').value;
@@ -18,7 +22,16 @@
         }
 
         function startProcess() {
-            jbpmRestAPI.startProcess('formdiv');
+            var onsuccess= function(msg) {
+                alert(msg);
+                clearDiv('formdiv')
+            }
+
+            var onerror = function(msg) {
+                alert("Error: " + msg);
+                clearDiv('formdiv');
+            }
+            jbpmRestAPI.startProcess('formdiv', onsuccess, onerror);
         }
 
         function claimTask() {
@@ -83,6 +96,8 @@
                     </tr>
                 </table>
             </td>
+        </tr>
+        <tr>
             <td colspan="2">
                 <input type="button" value="show process form" onclick="showStartProcessForm()">
                 <input type="button" value="show task form" onclick="showTaskForm()">
