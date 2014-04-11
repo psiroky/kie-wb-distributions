@@ -1,27 +1,17 @@
 function jbpmRestAPI() {
 
     var configs = new Object();
+    var lastConfig;
 
     var listener = function dolisten(event){
 
-        var i=0;
+        if (lastConfig) {
+            if (!lastConfig.host.startsWith(event.origin)) return;
 
-        var config = null;
-
-        for (var key in configs) {
-            var formConfig = configs[key];
-            if (formConfig && formConfig.host.startsWith(event.origin)) {
-                config = formConfig;
-                break;
-            }
+            if (event.data == 'success' && lastConfig.onsuccess) lastConfig.onsuccess(event.data);
+            else if (lastConfig.onerror) lastConfig.onerror(event.data);
+            delete configs[lastConfig.containerId];
         }
-
-        if (config) processFormAction(config);
-    }
-
-    var processFormAction = function(config) {
-        if (!config) return;
-
     }
 
     var getXMLDoc = function(xml) {
@@ -151,49 +141,42 @@ function jbpmRestAPI() {
     };
 
 
-    this.startProcess = function(responseDiv) {
-        postAction(responseDiv, 'startProcess');
+    this.startProcess = function(responseDiv, onsuccess, onerror) {
+        postAction(responseDiv, 'startProcess', onsuccess, onerror);
     };
 
-    this.claimTask = function(responseDiv) {
-        postAction(responseDiv, 'claimTask');
+    this.claimTask = function(responseDiv, onsuccess, onerror) {
+        postAction(responseDiv, 'claimTask', onsuccess, onerror);
     };
 
-    this.startTask = function(responseDiv) {
-        postAction(responseDiv, 'startTask');
+    this.startTask = function(responseDiv, onsuccess, onerror) {
+        postAction(responseDiv, 'startTask', onsuccess, onerror);
     };
 
-    this.releaseTask = function(responseDiv) {
-        postAction(responseDiv, 'releaseTask');
+    this.releaseTask = function(responseDiv, onsuccess, onerror) {
+        postAction(responseDiv, 'releaseTask', onsuccess, onerror);
     };
 
-    this.saveTask = function(responseDiv) {
-        postAction(responseDiv, 'saveTask');
+    this.saveTask = function(responseDiv, onsuccess, onerror) {
+        postAction(responseDiv, 'saveTask', onsuccess, onerror);
     };
 
-    this.completeTask = function(responseDiv) {
-        postAction(responseDiv, 'completeTask');
+    this.completeTask = function(responseDiv, onsuccess, onerror) {
+        postAction(responseDiv, 'completeTask', onsuccess, onerror);
     };
 
-    var postAction = function(responseDiv, action) {
+    var postAction = function(responseDiv, action, onsuccess, onerror) {
         if (responseDiv && action) {
             var config = configs[responseDiv];
             if (config) {
                 var frame = document.getElementById(responseDiv + '_form').contentWindow;
                 frame.postMessage(action, config.formURL);
+                lastConfig = config;
+                if (onsuccess) lastConfig.onsuccess = onsuccess;
+                if (onerror) lastConfig.onerror = onerror;
             }
         }
     }
-
-    /**
-     * public static final String ACTION_CLAIM_TASK = "claimTask";
-     public static final String ACTION_START_TASK = "startTask";
-     public static final String ACTION_RELEASE_TASK = "releaseTask";
-     public static final String ACTION_SAVE_TASK = "saveTask";
-     public static final String ACTION_COMPLETE_TASK = "completeTask";
-     * @param containerId
-     */
-
 
     this.showTaskForm = function (hostUrl, taskId, responseDiv) {
         var config = {
