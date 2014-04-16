@@ -8,50 +8,112 @@
             document.getElementById(divId).innerHTML = "";
         }
 
-        function showTaskForm() {
+        function showTaskForm(divId) {
             var hostUrl = document.getElementById('url').value;
             var taskId = document.getElementById('taskId').value;
-            jbpmRestAPI.showTaskForm(hostUrl, taskId, 'formdiv');
+
+            var onsuccess = function (msg) {
+                alert ("success showing task form!: " + msg)
+            }
+
+            var onerror = function (msg) {
+                alert("something wrong happened: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+
+            jbpmRestAPI.showTaskForm(hostUrl, taskId, divId, onsuccess, onerror);
         }
 
-        function showStartProcessForm() {
+        function showStartProcessForm(divId) {
             var hostUrl = document.getElementById('url').value;
             var deploymentId = document.getElementById('deploymentId').value;
             var processId = document.getElementById('processId').value;
-            jbpmRestAPI.showStartProcessForm(hostUrl, deploymentId, processId, 'formdiv');
+
+
+            var onsuccess = function (msg) {
+                alert ("success showing process form!: " + msg)
+            }
+
+            var onerror = function (msg) {
+                alert("something wrong happened: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.showStartProcessForm(hostUrl, deploymentId, processId, divId, onsuccess, onerror);
         }
 
-        function startProcess() {
+        function startProcess(divId) {
             var onsuccess= function(msg) {
-                alert(msg);
-                clearDiv('formdiv')
+                alert("Starting process: " + msg);
+                jbpmRestAPI.clearContainer(divId);
             }
 
             var onerror = function(msg) {
-                alert("Error: " + msg);
-                clearDiv('formdiv');
+                alert("Error starting process: " + msg);
+                jbpmRestAPI.clearContainer(divId);
             }
-            jbpmRestAPI.startProcess('formdiv', onsuccess, onerror);
+            jbpmRestAPI.startProcess(divId, onsuccess, onerror);
         }
 
-        function claimTask() {
-            jbpmRestAPI.claimTask('formdiv')
+        function claimTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Task claimed: " + msg);
+            }
+
+            var onerror = function(msg) {
+                alert("Error claiming task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.claimTask(divId, onsuccess, onerror)
         }
 
-        function startTask() {
-            jbpmRestAPI.startTask('formdiv')
+        function startTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Starting task: " + msg);
+            }
+
+            var onerror = function(msg) {
+                alert("Error starting task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.startTask(divId, onsuccess, onerror)
         }
 
-        function releaseTask() {
-            jbpmRestAPI.releaseTask('formdiv')
+        function releaseTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Released task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+
+            var onerror = function(msg) {
+                alert("Error releasing task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.releaseTask(divId, onsuccess, onerror)
         }
 
-        function saveTask() {
-            jbpmRestAPI.saveTask('formdiv')
+        function saveTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Saved task: " + msg);
+            }
+
+            var onerror = function(msg) {
+                alert("Error saving task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.saveTask(divId, onsuccess, onerror)
         }
 
-        function completeTask() {
-            jbpmRestAPI.completeTask('formdiv')
+        function completeTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Completed task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+
+            var onerror = function(msg) {
+                alert("Error completing task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.completeTask(divId, onsuccess, onerror)
         }
 
     </script>
@@ -99,19 +161,19 @@
         </tr>
         <tr>
             <td colspan="2">
-                <input type="button" value="show process form" onclick="showStartProcessForm()">
-                <input type="button" value="show task form" onclick="showTaskForm()">
+                <input type="button" value="show process form" onclick="showStartProcessForm('formdiv')">
+                <input type="button" value="show task form" onclick="showTaskForm('formdiv')">
             </td>
         </tr>
     </table>
 
     <div id="formdiv" style="width: 400px; height: 400px; border: solid black 1px;"></div>
-    <input type="button" value="Start Process!" onclick="startProcess()"/>
-    <input type="button" value="Claim Task" onclick="claimTask();"/>
-    <input type="button" value="Start Task" onclick="startTask();"/>
-    <input type="button" value="Release Task" onclick="releaseTask();"/>
-    <input type="button" value="Save Task" onclick="saveTask();"/>
-    <input type="button" value="Complete Task" onclick="completeTask();"/>
+    <input type="button" value="Start Process!" onclick="startProcess('formdiv')"/>
+    <input type="button" value="Claim Task" onclick="claimTask('formdiv');"/>
+    <input type="button" value="Start Task" onclick="startTask('formdiv');"/>
+    <input type="button" value="Release Task" onclick="releaseTask('formdiv');"/>
+    <input type="button" value="Save Task" onclick="saveTask('formdiv');"/>
+    <input type="button" value="Complete Task" onclick="completeTask('formdiv');"/>
 </body>
 
 </html>
