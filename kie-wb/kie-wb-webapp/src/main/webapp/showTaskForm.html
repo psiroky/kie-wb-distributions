@@ -1,0 +1,127 @@
+<html>
+<head>
+    <title>Test rest</title>
+    <script src="js/jbpm-rest-integration.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        function showHideTaskButtons(action) {
+            document.getElementById("taskbuttons").style.display = action;
+        }
+
+        function showTaskForm(divId) {
+            var hostUrl = document.getElementById('url').value;
+            var taskId = document.getElementById('taskId').value;
+
+            var onsuccess = function (msg) {
+                showHideTaskButtons('block')
+            }
+
+            var onerror = function (msg) {
+                alert("something wrong happened: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+
+            jbpmRestAPI.showTaskForm(hostUrl, taskId, divId, onsuccess, onerror);
+        }
+
+        function claimTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Task claimed");
+            }
+
+            var onerror = function(msg) {
+                alert("Error claiming task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.claimTask(divId, onsuccess, onerror)
+        }
+
+        function startTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Task Started");
+            }
+
+            var onerror = function(msg) {
+                alert("Error starting task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.startTask(divId, onsuccess, onerror)
+        }
+
+        function releaseTask(divId) {
+            var onsuccess= function(msg) {
+                jbpmRestAPI.clearContainer(divId);
+                document.getElementById("taskbuttons").style.display = 'none';
+            }
+
+            var onerror = function(msg) {
+                alert("Error releasing task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+            }
+            jbpmRestAPI.releaseTask(divId, onsuccess, onerror)
+        }
+
+        function saveTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Saved Task");
+                jbpmRestAPI.clearContainer(divId);
+                document.getElementById("taskbuttons").style.display = 'none';
+            }
+
+            var onerror = function(msg) {
+                alert("Error saving task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+                document.getElementById("taskbuttons").style.display = 'none';
+            }
+            jbpmRestAPI.saveTask(divId, onsuccess, onerror)
+        }
+
+        function completeTask(divId) {
+            var onsuccess= function(msg) {
+                alert("Completed Task");
+                jbpmRestAPI.clearContainer(divId);
+                document.getElementById("taskbuttons").style.display = 'none';
+            }
+
+            var onerror = function(msg) {
+                alert("Error completing task: " + msg);
+                jbpmRestAPI.clearContainer(divId);
+                document.getElementById("taskbuttons").style.display = 'none';
+            }
+            jbpmRestAPI.completeTask(divId, onsuccess, onerror)
+        }
+
+    </script>
+</head>
+
+<body>
+    <table>
+        <th>
+            <td colspan="2">Task Info</td>
+        </th>
+        <tr>
+            <td>TaskId: </td>
+            <td><input name="taskId" id="taskId"></td>
+        </tr>
+        <tr>
+            <td>Server URL: </td>
+            <td><input name="url" id="url"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" value="show task form" onclick="showTaskForm('formdiv')">
+            </td>
+        </tr>
+    </table>
+
+    <div id="formdiv" style="width: 400px; height: 400px; border: solid black 1px;"></div>
+    <div id="taskbuttons" style="display: none;">
+        <input type="button" value="Claim Task" onclick="claimTask('formdiv');"/>
+        <input type="button" value="Start Task" onclick="startTask('formdiv');"/>
+        <input type="button" value="Release Task" onclick="releaseTask('formdiv');"/>
+        <input type="button" value="Save Task" onclick="saveTask('formdiv');"/>
+        <input type="button" value="Complete Task" onclick="completeTask('formdiv');"/>
+    </div>
+</body>
+
+</html>
