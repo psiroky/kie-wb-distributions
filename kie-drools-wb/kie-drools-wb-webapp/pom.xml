@@ -1047,7 +1047,87 @@
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
-          <packagingExcludes>**/javax/**/*.*,**/client/**/*.class,**/*.symbolMap</packagingExcludes>
+          <packagingExcludes>
+            **/javax/**/*.*,
+            **/client/**/*.class,
+            **/*.symbolMap,
+            <!-- UF client related -->
+            WEB-INF/lib/uberfire-js-*.jar,
+            WEB-INF/lib/uberfire-client-*.jar,
+            WEB-INF/lib/uberfire-security-client-*.jar,
+            WEB-INF/lib/uberfire-workbench-*.jar,
+            WEB-INF/lib/uberfire-widget-markdown-*.jar,
+            WEB-INF/lib/uberfire-widgets-core-client-*.jar,
+            WEB-INF/lib/uberfire-widgets-commons-*.jar,
+            WEB-INF/lib/uberfire-runtime-plugins-client-*.jar,
+            WEB-INF/lib/kie-uberfire-social-activities-client-*.jar,
+            WEB-INF/lib/uberfire-commons-editor-client-*.jar,
+            WEB-INF/lib/uberfire-apps-client-*.jar,
+            WEB-INF/lib/uberfire-widgets-properties-editor-client-*.jar,
+            WEB-INF/lib/uberfire-wires-core-client-*.jar,
+            WEB-INF/lib/uberfire-wires-core-trees-*.jar,
+            <!-- Guvnor client related -->
+            WEB-INF/lib/guvnor-project-client-*.jar,
+            WEB-INF/lib/guvnor-structure-client-*.jar,
+            WEB-INF/lib/guvnor-inbox-client-*.jar,
+            WEB-INF/lib/guvnor-m2repo-editor-client-*.jar,
+            WEB-INF/lib/guvnor-workingset-client-*.jar,
+            WEB-INF/lib/guvnor-message-console-client-*.jar,
+            WEB-INF/lib/guvnor-organizationalunit-manager-*.jar,
+            WEB-INF/lib/guvnor-asset-mgmt-client-*.jar,
+            <!-- Kie Workbench client related-->
+            WEB-INF/lib/kie-wb-common-ui-*.jar,
+            WEB-INF/lib/kie-wb-common-data-modeller-client-*.jar,
+            WEB-INF/lib/kie-wb-common-project-editor-client-*.jar,
+            WEB-INF/lib/kie-wb-common-project-explorer-client-*.jar,
+            WEB-INF/lib/kie-wb-common-project-imports-editor-*.jar,
+            WEB-INF/lib/kie-wb-common-search-screen-client-*.jar,
+            WEB-INF/lib/kie-wb-config-resource-widget-*.jar,
+            WEB-INF/lib/kie-wb-decorated-grid-widget-*.jar,
+            WEB-INF/lib/kie-wb-metadata-widget-*.jar,
+            WEB-INF/lib/kie-wb-common-default-editor-client-*.jar,
+            WEB-INF/lib/kie-wb-common-java-editor-client-*.jar,
+            WEB-INF/lib/kie-wb-common-server-ui-client-*.jar,
+            WEB-INF/lib/kie-wb-common-contributors-client-*.jar,
+            WEB-INF/lib/kie-wb-common-social-home-page-client-*.jar,
+            <!-- Community specific Home Page -->
+            WEB-INF/lib/kie-drools-wb-home-page-community-*.jar,
+            WEB-INF/lib/kie-wb-common-home-client-*.jar,
+            <!-- Drools Workbench client related -->
+            WEB-INF/lib/drools-wb-categories-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-default-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-drl-text-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-dsl-text-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-dtable-xls-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-enum-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-globals-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-guided-dtable-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-guided-dtree-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-guided-rule-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-guided-scorecard-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-guided-template-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-scorecard-xls-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-test-scenario-editor-client-*.jar,
+            WEB-INF/lib/drools-wb-workitems-editor-client-*.jar,
+            <!-- GWT Client Related -->
+            WEB-INF/lib/gwt-bootstrap-*.jar,
+            WEB-INF/lib/gwt-user-*.jar,
+            WEB-INF/lib/guava-gwt-*.jar,
+            WEB-INF/lib/gwt-dnd-*.jar,
+            WEB-INF/lib/gchart-*.jar,
+            <!-- jBPM console & other client related -->
+            WEB-INF/lib/jbpm-*-client-*.jar,
+            <!-- Dashbuilder client related -->
+            WEB-INF/lib/dashbuilder-common-client-*.jar,
+            WEB-INF/lib/dashbuilder-dataset-client-*.jar,
+            WEB-INF/lib/dashbuilder-displayer-client-*.jar,
+            WEB-INF/lib/dashbuilder-displayer-screen-*.jar,
+            WEB-INF/lib/dashbuilder-displayer-editor-*.jar,
+            WEB-INF/lib/dashbuilder-renderer-google-*.jar,
+            WEB-INF/lib/dashbuilder-renderer-table-*.jar,
+            WEB-INF/lib/dashbuilder-renderer-selector-*.jar,
+            WEB-INF/lib/dashbuilder-client-all-*.jar
+          </packagingExcludes>
           <archive>
             <addMavenDescriptor>false</addMavenDescriptor>
           </archive>
