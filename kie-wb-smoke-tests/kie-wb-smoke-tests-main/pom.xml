@@ -181,12 +181,6 @@
       </exclusions>
     </dependency>
 
-    <!-- REST -->
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>jaxrs-api</artifactId>
-    </dependency>
-
     <dependency>
       <groupId>commons-net</groupId>
       <artifactId>commons-net</artifactId>
