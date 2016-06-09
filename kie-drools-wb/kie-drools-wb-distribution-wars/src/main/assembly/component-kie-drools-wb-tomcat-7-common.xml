@@ -13,7 +13,7 @@
         <include>antlr:antlr</include>
         <include>dom4j:dom4j</include>
         <include>org.apache.neethi:neethi</include>
-        <include>org.hibernate.javax.persistence:hibernate-jpa-2.0-api</include>
+        <include>org.hibernate.javax.persistence:hibernate-jpa-2.1-api</include>
         <include>org.hibernate:hibernate-entitymanager</include>
         <include>org.hibernate:hibernate-core</include>
         <include>org.hibernate:hibernate-validator</include>
