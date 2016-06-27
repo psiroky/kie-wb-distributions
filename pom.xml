@@ -51,6 +51,27 @@
     </repository>
   </repositories>
 
+  <!-- TODO move the dependencies into kie-bom -->
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-wb-distribution-wars</artifactId>
+        <version>${version.org.kie}</version>
+        <type>war</type>
+        <classifier>eap7</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-drools-wb-distribution-wars</artifactId>
+        <version>${version.org.kie}</version>
+        <type>war</type>
+        <classifier>eap7</classifier>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <modules>
     <module>kie-config-cli</module>
     <module>kie-wb-example-repositories</module>
