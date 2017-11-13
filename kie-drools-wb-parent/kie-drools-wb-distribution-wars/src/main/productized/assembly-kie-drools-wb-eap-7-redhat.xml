@@ -23,7 +23,6 @@
   <id>eap7-redhat</id>
   <formats>
     <format>war</format>
-    <format>dir</format>
   </formats>
 
   <includeBaseDirectory>false</includeBaseDirectory>
